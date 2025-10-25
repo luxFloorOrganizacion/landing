@@ -1,0 +1,166 @@
+$color-text-dark: #101828;
+$color-text-medium: #4a5565;
+$color-text-light: #99a1af;
+$color-button-bg: #f8f7f4;
+$color-button-border: rgba(209, 213, 220, 0.50);
+
+.gallery-section {
+    padding: 80px 5%; /* Padding vertical y horizontal para centrar el contenido */
+    width: 100%;
+    max-width: 1200px; /* Ancho máximo para el contenido */
+    margin: 0 auto; /* Centra la sección en la página */
+    
+    // Contenedor principal para evitar problemas de box-sizing
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* ENCABEZADO Y NAVEGACIÓN */
+/* ---------------------------------------------------- */
+
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px; /* Espacio entre el encabezado y la cuadrícula de productos */
+    
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    &__title {
+        color: $color-text-dark;
+        font-family: 'Tinos-Italic', sans-serif;
+        font-size: clamp(24px, 4vw, 30px); /* Título responsivo */
+        line-height: 1.2;
+        letter-spacing: -0.75px;
+        font-weight: 400;
+        font-style: italic;
+        margin: 0;
+    }
+
+    &__navigation {
+        display: flex;
+        gap: 12px;
+    }
+
+    &__nav-button {
+        background: $color-button-bg;
+        border-radius: 50%; // Para hacerlo completamente redondo
+        border: 1.11px solid $color-button-border;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: darken($color-button-bg, 3%);
+        }
+        
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+/* ---------------------------------------------------- */
+/* CUADRÍCULA DE PRODUCTOS (GRID) */
+/* ---------------------------------------------------- */
+
+.product-grid {
+    display: grid;
+    // La clave del layout responsivo: crea columnas que se ajustan automáticamente
+    // minmax(200px, 1fr) asegura que la columna no sea menor de 200px y crezca equitativamente
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 24px; // Espacio uniforme entre las tarjetas
+
+    .is-hidden-mobile {
+        @media (max-width: 1024px) {
+            display: none; // Oculta la quinta tarjeta en tabletas y móviles
+        }
+    }
+}
+
+/* ---------------------------------------------------- */
+/* TARJETA DE PRODUCTO INDIVIDUAL */
+/* ---------------------------------------------------- */
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+    &__image-wrapper {
+        border-radius: 10px;
+        overflow: hidden;
+        // Mantiene una proporción 1:1 para la imagen
+        width: 100%;
+        padding-top: 100%; /* Truco para relación de aspecto 1:1 */
+        position: relative;
+    }
+    
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    &__name {
+        color: $color-text-dark;
+        font-family: 'Arimo-Regular', sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        margin: 0;
+    }
+    
+    &__price {
+        display: flex;
+        align-items: baseline;
+        margin: 0;
+    }
+
+    &__price-value {
+        color: $color-text-medium;
+        font-family: 'Arimo-Regular', sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        margin-right: 4px;
+    }
+
+    &__price-unit {
+        color: $color-text-light;
+        font-family: 'Arimo-Regular', sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+    }
+
+    &__dimensions {
+        color: $color-text-light;
+        font-family: 'Arimo-Regular', sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        margin: 0;
+    }
+}

@@ -1,0 +1,88 @@
+---
+import '../styles/gallery.scss';
+
+
+---
+<section class="gallery-section">
+    <!-- Encabezado de la Galería y Navegación -->
+    <header class="gallery-header">
+        <h2 class="gallery-header__title">Gallery</h2>
+        <div class="gallery-header__navigation">
+            <button class="gallery-header__nav-button" aria-label="Anterior">
+                <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="#4A5565" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <button class="gallery-header__nav-button" aria-label="Siguiente">
+                <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 15L12.5 10L7.5 5" stroke="#4A5565" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Contenedor de las Tarjetas de Producto (usará Grid) -->
+    <div class="product-grid">
+        <!-- Tarjeta 1: Cloudstone Beige -->
+        <div class="product-card">
+            <div class="product-card__image-wrapper">
+                <img class="product-card__image" src="material.png" alt="Cloudstone Beige Flooring" />
+            </div>
+            <div class="product-card__details">
+                <h3 class="product-card__name">Cloudstone Beige</h3>
+                <p class="product-card__price">
+                    <span class="product-card__price-value">29.99</span>
+                    <span class="product-card__price-unit">/m²</span>
+                </p>
+                <p class="product-card__dimensions">600mm | 600mm | 5mm</p>
+            </div>
+        </div>
+        
+        <!-- Tarjeta 2: Noir Aurum -->
+        <div class="product-card">
+            <div class="product-card__image-wrapper">
+                <img class="product-card__image" src="material.png" alt="Noir Aurum Flooring" />
+            </div>
+            <div class="product-card__details">
+                <h3 class="product-card__name">Noir Aurum</h3>
+                <p class="product-card__price">
+                    <span class="product-card__price-value">62.50</span>
+                    <span class="product-card__price-unit">/m²</span>
+                </p>
+                <p class="product-card__dimensions">800mm | 800mm | 6mm</p>
+            </div>
+        </div>
+        
+        <!-- Tarjeta 3: Ash Drift -->
+        <div class="product-card">
+            <div class="product-card__image-wrapper">
+                <img class="product-card__image" src="material.png" alt="Ash Drift Flooring" />
+            </div>
+            <div class="product-card__details">
+                <h3 class="product-card__name">Ash Drift</h3>
+                <p class="product-card__price">
+                    <span class="product-card__price-value">37.00</span>
+                    <span class="product-card__price-unit">/m²</span>
+                </p>
+                <p class="product-card__dimensions">600mm | 600mm | 5mm</p>
+            </div>
+        </div>
+        
+        <!-- Tarjeta 4: Storm Ember -->
+        <div class="product-card">
+            <div class="product-card__image-wrapper">
+                <img class="product-card__image" src="material.png" alt="Storm Ember Flooring" />
+            </div>
+            <div class="product-card__details">
+                <h3 class="product-card__name">Storm Ember</h3>
+                <p class="product-card__price">
+                    <span class="product-card__price-value">49.99</span>
+                    <span class="product-card__price-unit">/m²</span>
+                </p>
+                <p class="product-card__dimensions">600mm | 1200mm | 8mm</p>
+            </div>
+        </div>
+        
+       
+    </div>
+</section>

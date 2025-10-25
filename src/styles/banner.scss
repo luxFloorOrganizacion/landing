@@ -1,0 +1,100 @@
+
+$color-primary: #c35c3b;
+$color-text-dark: #101828;
+$color-text-light: #4a5565;
+
+.banner {
+    background: #ffffff;
+    min-height: 172px;
+    width: 100%;
+    padding: 20px 5%; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 30px; 
+        align-items: flex-start;
+    }
+
+    
+    &__heading-group {
+        flex-basis: 50%; 
+        max-width: 565px; 
+    }
+
+    &__title {
+        margin: 0;
+        padding: 0;
+    }
+    
+    &__title-inspire,
+    &__title-trust {
+        display: block; 
+        font-family: 'Tinos-Italic', sans-serif;
+        font-size: clamp(40px, 6vw, 64px); 
+        line-height: 1.1;
+        letter-spacing: -1.6px;
+        font-style: italic;
+        font-weight: 400;
+        
+        margin-bottom: -10px; 
+    }
+
+    &__title-inspire {
+        color: $color-text-dark; 
+    }
+
+    &__title-trust {
+        color: $color-primary;
+        margin-left: 14px; 
+    }
+
+    
+    &__content-group {
+        flex-basis: 40%;
+        max-width: 420px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px; 
+        @media (max-width: 768px) {
+            margin-left: 0;
+        }
+    }
+
+    &__paragraph {
+        color: $color-text-light; 
+        font-family: 'Arimo-Regular', sans-serif;
+        font-size: 16px;
+        line-height: 26px;
+        margin: 0;
+        
+    }
+
+  
+    &__button {
+        background: $color-primary; 
+        color: #ffffff;
+        width: 253px;
+        height: 52px;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    &__button-text {
+        font-family: 'Arimo-Regular', sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.8px;
+        font-weight: 400;
+        text-transform: uppercase;
+        
+        padding: 0 20px; 
+    }
+}
