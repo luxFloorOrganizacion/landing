@@ -1,0 +1,100 @@
+---
+import '../styles/footer.scss'; 
+---
+
+
+
+<button id="fab-open-modal" class="footer__fab" aria-label="Send message">
+    <svg 
+        width="28" height="28" viewBox="0 0 24 24" fill="none" 
+        stroke="white" stroke-width="1.5" stroke-linecap="round" 
+        stroke-linejoin="round"
+    >
+        <path d="M22 2L11 13"></path>
+        <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+    </svg>
+</button>
+
+<dialog id="contact-modal" class="modal">
+    <div class="modal__content">
+        <button id="modal-close" class="modal__close" aria-label="Cerrar modal">×</button>
+        
+        <h3 class="modal__title">¡Hablemos de tu proyecto!</h3>
+        <p class="modal__subtitle">Completa los campos y te redirigiremos a WhatsApp para finalizar la conversación.</p>
+
+        <form id="whatsapp-form" class="modal__form">
+            <div class="form__group">
+                <label for="name">Tu Nombre</label>
+                <input type="text" id="name" name="name" required placeholder="Ej: Juan Pérez">
+            </div>
+            
+            <div class="form__group">
+                <label for="message">Mensaje (opcional)</label>
+                <textarea id="message" name="message" rows="3" placeholder="Ej: Necesito piso laminado para una oficina de 50m²"></textarea>
+            </div>
+            
+            <button type="submit" class="modal__submit-btn">
+                Enviar mensaje por WhatsApp
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" style="vertical-align: middle;">
+                    <path d="M12.04 2C6.58 2 2.1 6.49 2.1 11.95c0 1.76.47 3.45 1.37 4.95l-.94 3.44 3.52-.92c1.45.88 3.09 1.36 4.07 1.36h.02c5.46 0 9.94-4.48 9.94-9.94S17.5 2 12.04 2zM17.03 15.63c-.15.4-.55.39-.99.39-1.34 0-2.45-.48-3.41-.95-.29-.14-.58-.33-.87-.52-.8-.43-1.6-.96-2.09-1.92-.1-.2-.2-.4-.28-.59s-.14-.38-.14-.58c0-.4.18-.74.33-1.01s.4-.38.67-.53c.27-.15.54-.23.82-.23.28 0 .54.08.8.23.26.15.53.33.74.58.2.24.36.46.46.73s.15.58.15.84c0 .26-.06.52-.15.8-.1.28-.27.5-.47.67s-.4.32-.67.43c-.27.12-.5.18-.74.18-.24 0-.48-.06-.7-.18-.15-.08-.3-.17-.43-.28s-.24-.26-.33-.4-.15-.3-.15-.43c0-.13.06-.24.15-.33s.2-.18.33-.27c.13-.09.28-.15.46-.15.18 0 .36.04.54.12.18.08.36.2.5.38.15.18.27.4.36.67.1.26.15.54.15.82 0 .28-.06.54-.15.8-.1.26-.24.48-.43.64s-.4.29-.67.4c-.26.11-.53.16-.8.16-.27 0-.53-.06-.8-.16s-.48-.24-.67-.43c-.19-.19-.34-.43-.43-.72s-.14-.6-.14-.94c0-.34.05-.68.14-1.02s.25-.66.43-.98c.18-.32.4-.6.64-.84s.5-.4.8-.57c.3-.17.6-.32.94-.43s.7-.15 1.05-.15c.57 0 1.14.15 1.7.46s1.08.74 1.5 1.25c.42.5.76 1.1.99 1.8.23.7.35 1.45.35 2.2c0 .28-.02.56-.06.84s-.1.54-.2.8c-.1.25-.23.48-.4.67-.17.18-.36.33-.58.43z"></path>
+                </svg>
+            </button>
+        </form>
+    </div>
+</dialog>
+
+<script is:inline>
+    const modal = document.getElementById('contact-modal');
+    const openBtn = document.getElementById('fab-open-modal');
+    const closeBtn = document.getElementById('modal-close');
+    const whatsappForm = document.getElementById('whatsapp-form');
+
+    if (modal && openBtn && closeBtn && whatsappForm) {
+        // 1. Abrir Modal al clickear FAB
+        openBtn.addEventListener('click', () => {
+            modal.showModal(); // Método nativo de <dialog>
+            document.body.style.overflow = 'hidden'; // Bloquear scroll del fondo
+        });
+
+        // 2. Cerrar Modal al clickear el botón "x"
+        closeBtn.addEventListener('click', () => {
+            modal.close();
+            document.body.style.overflow = ''; // Restaurar scroll
+        });
+
+        // 3. Generar link de WhatsApp al enviar el formulario
+        whatsappForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+            
+            // Reemplaza 'XXXXXXXXXX' con el número de teléfono
+            const phoneNumber = '521XXXXXXXXXX'; 
+            
+            // Construir el mensaje predefinido
+            let whatsappMessage = `¡Hola, soy ${name}! Vi su sitio web y me gustaría cotizar.`;
+            if (message) {
+                whatsappMessage += ` Detalles: ${message}`;
+            }
+
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            // Abrir WhatsApp en una nueva pestaña
+            window.open(whatsappUrl, '_blank');
+            
+            // Cerrar el modal
+            modal.close();
+            document.body.style.overflow = '';
+        });
+        
+        // 4. Cerrar al hacer click fuera del modal (backdrop)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.close();
+                document.body.style.overflow = '';
+            }
+        });
+    }
+</script>

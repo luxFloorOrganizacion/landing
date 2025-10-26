@@ -1,4 +1,7 @@
-// Variables base
+// -------------------------------------------
+// VARIABLES BASE
+// -------------------------------------------
+
 $primary: #C35C3B;
 $ink: #2d2d2d;
 $muted: #6B6B6B;
@@ -16,6 +19,10 @@ $round: 9999px;
   text-align: center;
   padding: 80px 16px;
   background: $bg;
+
+  @media (max-width: 640px) {
+    padding: 60px 12px;
+  }
 }
 
 .testimonials-title {
@@ -25,6 +32,10 @@ $round: 9999px;
   font-size: 24px;
   letter-spacing: -0.02em;
   color: #000;
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
 }
 
 .testimonials-subtitle {
@@ -34,6 +45,11 @@ $round: 9999px;
   font-size: 16px;
   line-height: 1.6;
   color: #000;
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
 }
 
 // -------------------------------------------
@@ -46,25 +62,31 @@ $round: 9999px;
   background: $panel;
   border-radius: $radius;
   padding: 24px 24px 32px;
+
+  @media (max-width: 640px) {
+    padding: 16px;
+  }
 }
 
 .testimonials-tabs {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 24px;
 
   .tab {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 0 20px;
-    height: 44px;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 16px;
+    height: 40px;
     border: 0;
     border-radius: $round;
     background: #d9d9d9;
     color: #4a4a4a;
-    font: 16px/24px 'Arimo-Regular', sans-serif;
+    font: 15px/22px 'Arimo-Regular', sans-serif;
     cursor: pointer;
     transition: all 0.2s ease;
 
@@ -76,6 +98,14 @@ $round: 9999px;
     &.tab--active {
       background: $primary;
       color: #fff;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tab {
+      flex: 1 1 45%;
+      font-size: 14px;
+      padding: 0 12px;
     }
   }
 }
@@ -93,6 +123,10 @@ $round: 9999px;
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
   }
+
+  @media (max-width: 640px) {
+    gap: 16px;
+  }
 }
 
 // -------------------------------------------
@@ -103,14 +137,11 @@ $round: 9999px;
   background: $bg;
   border-radius: $radius;
   padding: 40px;
+  text-align: left;
 
   .card-stars {
     display: flex;
     gap: 4px;
-
-    .star {
-      flex: 0 0 auto;
-    }
   }
 
   .card-quote {
@@ -143,6 +174,18 @@ $round: 9999px;
       font: 400 14px/20px 'Arimo-Regular', sans-serif;
     }
   }
+
+  @media (max-width: 640px) {
+    padding: 24px;
+    .card-quote {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .card-author {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
 }
 
 // -------------------------------------------
@@ -168,10 +211,6 @@ $round: 9999px;
         color: $ink;
         font: 400 48px/48px 'Arimo-Regular', sans-serif;
       }
-
-      svg {
-        flex-shrink: 0;
-      }
     }
 
     .stat-label {
@@ -183,6 +222,17 @@ $round: 9999px;
 
   @media (max-width: 900px) {
     flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    .stat {
+      padding: 20px;
+      .stat-value span {
+        font-size: 32px;
+      }
+    }
   }
 }
 
@@ -211,14 +261,116 @@ $round: 9999px;
       background: darken(#e5e5e5, 10%);
     }
   }
+
+  @media (max-width: 480px) {
+    gap: 12px;
+    &__btn {
+      width: 44px;
+      height: 44px;
+    }
+  }
+}
+/* ============================== */
+/* 🎬 ANIMACIONES PROFESIONALES TESTIMONIALS */
+/* ============================== */
+
+/* Keyframes */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-// -------------------------------------------
-// RESPONSIVE OPTIMIZATION
-// -------------------------------------------
-
-@media (max-width: 640px) {
-  .testimonials-panel { padding: 16px; }
-  .card,
-  .stat { padding: 24px; }
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Entrada general de la sección */
+.testimonials-section {
+  animation: fadeInUp 1s ease-out both;
+}
+
+/* Tabs aparecen con leve desplazamiento */
+.testimonials-tabs .tab {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.testimonials-tabs .tab:nth-child(1) { animation-delay: 0.1s; }
+.testimonials-tabs .tab:nth-child(2) { animation-delay: 0.2s; }
+.testimonials-tabs .tab:nth-child(3) { animation-delay: 0.3s; }
+.testimonials-tabs .tab:nth-child(4) { animation-delay: 0.4s; }
+
+/* Animación de tarjetas */
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hover elegante */
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    transition: all 0.4s ease;
+  }
+}
+
+/* Animación en estadísticas */
+.stats .stat {
+  opacity: 0;
+  animation: scaleIn 0.9s ease forwards;
+}
+
+.stats .stat:nth-child(1) { animation-delay: 0.2s; }
+.stats .stat:nth-child(2) { animation-delay: 0.4s; }
+.stats .stat:nth-child(3) { animation-delay: 0.6s; }
+
+/* Navegación con efecto sutil */
+.testimonials-nav__btn {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.testimonials-nav__btn:nth-child(1) { animation-delay: 0.8s; }
+.testimonials-nav__btn:nth-child(2) { animation-delay: 1s; }

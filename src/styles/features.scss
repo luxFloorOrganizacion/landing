@@ -197,3 +197,74 @@ $color-text-medium: tokens.$color-text-medium; // Similar al gris del texto de d
         }
     }
 }
+/* ============================== */
+/* 🎬 ANIMACIONES PROFESIONALES */
+/* ============================== */
+
+/* Keyframes base */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animación de entrada por secciones */
+.benefits-section__col--left {
+  animation: fadeInLeft 1s ease-out both;
+}
+
+.benefits-section__col--center {
+  animation: fadeInUp 1.2s ease-out both;
+}
+
+.benefits-section__col--right {
+  animation: fadeInRight 1s ease-out both;
+}
+
+/* Animación individual para las tarjetas */
+.benefit-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Zoom sutil en imagen al pasar el mouse */
+  &__image-wrapper img {
+    transition: transform 1.2s ease;
+  }
+
+  &__image-wrapper:hover img {
+    transform: scale(1.08);
+  }
+}

@@ -80,13 +80,13 @@ import '../styles/gallery.scss';
   }
 
   function render(){
-    const pv = perView();
-    const slice = products.slice(state.index, state.index + pv);
-    gridEl.innerHTML = slice.map(cardHTML).join('');
-    const atStart = state.index <= 0;
-    const atEnd = state.index + pv >= products.length;
-    prevEl.toggleAttribute('disabled', atStart);
-    nextEl.toggleAttribute('disabled', atEnd);
+     const pv = perView();
+  const slice = products.slice(state.index, state.index + pv);
+  gridEl.innerHTML = slice.map((p, i) => {
+    return cardHTML(p).replace('<div class="product-card"', `<div class="product-card" style="--i:${i}"`);
+  }).join('');
+  gridEl.classList.add('is-updating');
+  setTimeout(() => gridEl.classList.remove('is-updating'), 100);
   }
 
   function next(){
@@ -107,4 +107,7 @@ import '../styles/gallery.scss';
 
   render();
 })();
+
+
+
 </script>

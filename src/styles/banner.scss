@@ -1,100 +1,193 @@
 @use './tokens' as tokens;
 
 .banner {
-    background: tokens.$color-white;
-    min-height: 172px;
-    width: 100%;
-    padding: 20px 5%; 
+  background: tokens.$color-white;
+  min-height: 172px;
+  width: 100%;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+
+  // Entrada general
+  opacity: 0;
+  animation: fadeInBanner 1.2s ease-out forwards;
+
+  @keyframes fadeInBanner {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  // --- TITULAR ---
+  &__heading-group {
+    flex-basis: 50%;
+    max-width: 565px;
+    animation: slideInLeft 1s ease-out 0.3s forwards;
+    opacity: 0;
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    span {
+      display: inline-block;
+      transition: transform 0.4s ease, color 0.3s ease;
+    }
+
+    // Efecto sutil en hover
+    &:hover span {
+      transform: translateY(-4px);
+    }
+  }
+
+  &__title-inspire,
+  &__title-trust {
+    display: block;
+    font-family: 'Tinos-Italic', sans-serif;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -1.6px;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: -10px;
+  }
+
+  &__title-inspire {
+    color: tokens.$color-text-dark;
+  }
+
+  &__title-trust {
+    color: tokens.$color-primary;
+    margin-left: 14px;
+  }
+
+  // --- CONTENIDO ---
+  &__content-group {
+    flex-basis: 40%;
+    max-width: 420px;
     display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    opacity: 0;
+    animation: slideInRight 1s ease-out 0.6s forwards;
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 768px) {
-        flex-direction: column;
-        gap: 30px; 
-        align-items: flex-start;
+      margin-left: 0;
+      text-align: left;
+    }
+  }
+
+  &__paragraph {
+    color: tokens.$color-text-light;
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    margin: 0;
+    animation: fadeInText 1s ease-out 1s forwards;
+    opacity: 0;
+
+    @keyframes fadeInText {
+      to {
+        opacity: 1;
+      }
+    }
+  }
+
+  // --- BOTÓN ---
+  &__button {
+    background: tokens.$color-primary;
+    color: #ffffff;
+    width: 253px;
+    height: 52px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+      // Brillo animado tipo “sweep”
+      &::after {
+        transform: translateX(150%);
+      }
     }
 
-    
-    &__heading-group {
-        flex-basis: 50%; 
-        max-width: 565px; 
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 150%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.3), transparent);
+      transform: translateX(0);
+      transition: transform 0.6s ease;
     }
+  }
 
-    &__title {
-        margin: 0;
-        padding: 0;
-    }
-    
-    &__title-inspire,
-    &__title-trust {
-        display: block; 
-        font-family: 'Tinos-Italic', sans-serif;
-        font-size: clamp(40px, 6vw, 64px); 
-        line-height: 1.1;
-        letter-spacing: -1.6px;
-        font-style: italic;
-        font-weight: 400;
-        
-        margin-bottom: -10px; 
-    }
+  &__button-text {
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.8px;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 0 20px;
+  }
 
-    &__title-inspire {
-        color: tokens.$color-text-dark; 
+  // --- Modo accesible: sin animaciones ---
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
     }
-
-    &__title-trust {
-        color: tokens.$color-primary;
-        margin-left: 14px; 
-    }
-
-    
-    &__content-group {
-        flex-basis: 40%;
-        max-width: 420px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    align-items: anchor-center;
-        gap: 24px; 
-        @media (max-width: 768px) {
-            margin-left: 0;
-        }
-    }
-
-    &__paragraph {
-        color: tokens.$color-text-light; 
-        font-family: 'Arimo-Regular', sans-serif;
-        font-size: 16px;
-        line-height: 26px;
-        margin: 0;
-        
-    }
-
-  
-    &__button {
-        background: tokens.$color-primary; 
-        color: #ffffff;
-        width: 253px;
-        height: 52px;
-        border: none;
-        
-        cursor: pointer;
-        padding: 0;
-        
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    &__button-text {
-        font-family: 'Arimo-Regular', sans-serif;
-        font-size: 16px;
-        line-height: 24px;
-        letter-spacing: 0.8px;
-        font-weight: 400;
-        text-transform: uppercase;
-        
-        padding: 0 20px; 
-    }
+  }
 }

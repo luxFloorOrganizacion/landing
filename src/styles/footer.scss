@@ -1,398 +1,392 @@
-.footer,
-.footer * {
-    box-sizing: border-box;
-}
+// -------------------------------------------
+// VARIABLES BASE
+// -------------------------------------------
+
+$bg-footer: #142748;
+$bg-gradient: linear-gradient(135deg, #142748 0%, #172c5a 100%); 
+$accent: #2d3ba8;
+$text-light: #ffffff;
+$muted: rgba(255, 255, 255, 0.8);
+$radius: 9999px;
+
+// -------------------------------------------
+// FOOTER BASE
+// -------------------------------------------
 
 .footer {
-    background: #142748;
-    height: 494px;
-    position: relative;
-    overflow: hidden;
-}
+  position: relative;
+  background: $bg-gradient; 
+  color: $text-light;
+  padding: 80px 24px 40px;
+  overflow: hidden;
+  z-index: 1;
 
-.container {
-    background: #2d3ba8;
-    border-radius: 33554400px;
-    opacity: 0.5;
-    width: 384px;
-    height: 384px;
+  @media (max-width: 768px) {
+    padding: 64px 20px 32px;
+  }
+
+  // Luces decorativas
+  &::before,
+  &::after {
+    content: '';
     position: absolute;
-    left: 968px;
-    top: -181px;
-    filter: blur(64px);
+    width: 300px;
+    height: 300px;
+    background: $accent;
+    opacity: 0.2; 
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0; 
+  }
+
+  &::before {
+    top: -100px;
+    right: -80px;
+  }
+
+  &::after {
+    bottom: -120px;
+    left: -80px;
+  }
 }
 
-.container2 {
-    background: #2d3ba8;
-    border-radius: 33554400px;
-    opacity: 0.5;
-    width: 384px;
-    height: 384px;
-    position: absolute;
-    left: -77px;
-    top: 215px;
-    filter: blur(64px);
+// -------------------------------------------
+// CONTENEDOR PRINCIPAL
+// -------------------------------------------
+
+.footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  // Brand/Misión a la izquierda (1fr) y Nav a la derecha (auto)
+  display: grid;
+  grid-template-columns: 1fr auto; 
+  gap: 40px;
+  align-items: start;
+  z-index: 1;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 60px;
+  }
 }
 
+// -------------------------------------------
+// CONTENIDO IZQUIERDO (Logo, Misión, LinkedIn)
+// -------------------------------------------
 
-
-.container4 {
-    width: 1212px;
-    height: 471px;
-    position: absolute;
-    left: 24px;
-    top: 64px;
-}
-
-.image-7 {
-    width: 153px;
-    height: 141px;
-    position: absolute;
-    left: 6px;
-    top: -49px;
-    object-fit: cover;
-    aspect-ratio: 153/141;
-}
-
-.container5 {
-    width: 512px;
-    height: 186.5px;
-    position: absolute;
-    left: 0px;
-    top: 141px;
-}
-
-.container6 {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    align-items: center;
-    justify-content: flex-start;
-    width: 512px;
-    height: 40px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-}
-
-.container7 {
+.footer__content-left {
     display: flex;
     flex-direction: column;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    width: 165.03px;
-    height: 40px;
-    position: relative;
+    gap: 24px;
+    
+    @media (max-width: 900px) {
+        align-items: center; 
+    }
 }
 
-.container8 {
-    align-self: stretch;
-    flex-shrink: 0;
-    height: 24px;
-    position: relative;
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
+  img {
+    width: 140px;
+    height: auto;
+    margin-bottom: 8px;
+    align-self: flex-start; 
+    
+    @media (max-width: 900px) {
+        align-self: center; 
+    }
+  }
+
+  p {
+    max-width: 480px;
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: $muted;
+
+    @media (max-width: 900px) {
+        margin: 0 auto;
+    }
+  }
 }
 
-.container9 {
-    opacity: 0.8;
-    display: flex;
-    flex-direction: row;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    align-self: stretch;
-    flex-shrink: 0;
-    height: 16px;
-    position: relative;
-}
-
-.paragraph {
-    width: 512px;
-    height: 58.5px;
-    position: absolute;
-    left: 0px;
-    top: 64px;
-}
-
-.link {
-    border-radius: 33554400px;
-    border-style: solid;
-    border-color: #ffffff;
-    border-width: 2px;
-    padding: 2px;
+// Estilos para el ícono de LinkedIn (Círculo)
+.footer__social-link {
     width: 40px;
     height: 40px;
-    position: absolute;
-    left: 45px;
-    top: 145.5px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: grid;
+    place-items: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    align-self: flex-start; 
+
+    svg {
+        width: 20px;
+        height: 20px;
+        stroke: $text-light;
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: $text-light;
+    }
+
+    @media (max-width: 900px) {
+        align-self: center; 
+    }
 }
 
-.icon {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    overflow: visible;
-}
 
-.navigation {
-    width: 1212px;
-    height: 236px;
-    position: absolute;
-    left: 38px;
-    top: -12px;
-}
+// -------------------------------------------
+// NAVEGACIÓN (Se ve en columna a la derecha)
+// -------------------------------------------
 
-.link2 {
-    display: flex;
-    flex-direction: row;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 1212px;
-    height: 28px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-}
+.footer__nav {
+  display: flex;
+  flex-direction: column; // Clave para que se apilen verticalmente
+  gap: 16px; 
+  align-items: flex-end; // Alinear los enlaces a la derecha del contenedor
 
-.home {
-    color: #ffffff;
-    text-align: right;
+  a {
+    color: $text-light;
     font-family: 'Arimo-Regular', sans-serif;
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 400;
-    position: relative;
-    flex: 1;
+    font-size: 16px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    // Para asegurar que el "Home" esté arriba del "Contact Us" 
+    // y no se vea como si fuera a la derecha.
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  @media (max-width: 900px) {
+    // En móvil, mejor centrar o hacerlos en línea horizontal
+    flex-direction: row; 
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px 24px; 
+    
+    a {
+        // En móvil, que el texto se ajuste
+        text-align: center;
+    }
+  }
 }
 
-.link3 {
-    display: flex;
-    flex-direction: row;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 1212px;
-    height: 28px;
-    position: absolute;
-    left: 0px;
-    top: 52px;
+// -------------------------------------------
+// FLOATING ACTION BUTTON (FAB)
+// -------------------------------------------
+
+.footer__fab {
+  position: fixed;
+  right: 32px;
+  bottom: 80px; 
+  background: darken($bg-footer, 5%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 10; 
+
+  svg {
+    // Asegurar que el avión esté en el centro visual
+    transform: translate(2px, -2px); 
+  }
+
+  &:hover {
+    background: lighten($bg-footer, 5%);
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 640px) {
+    width: 56px;
+    height: 56px;
+    right: 16px;
+    bottom: 60px;
+  }
 }
 
-.platform {
-    color: #ffffff;
-    text-align: right;
-    font-family: 'Arimo-Regular', sans-serif;
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 400;
-    position: relative;
-    flex: 1;
-}
+// -------------------------------------------
+// COPYRIGHT
+// -------------------------------------------
 
-.link4 {
-    display: flex;
-    flex-direction: row;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 848px;
-    height: 28px;
-    position: absolute;
-    left: 0px;
-    top: 104px;
-}
+.footer__bottom {
+  max-width: 1200px;
+  margin: 64px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  z-index: 1;
 
-.solutions {
-    color: #ffffff;
-    text-align: right;
-    font-family: 'Arimo-Regular', sans-serif;
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 400;
-    position: relative;
-    width: 1212px;
-}
-
-.link5 {
-    display: flex;
-    flex-direction: row;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 1212px;
-    height: 28px;
-    position: absolute;
-    left: 0px;
-    top: 156px;
-}
-
-.company {
-    color: #ffffff;
-    text-align: right;
-    font-family: 'Arimo-Regular', sans-serif;
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 400;
-    position: relative;
-    flex: 1;
-}
-
-.link6 {
-    display: flex;
-    flex-direction: row;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 1212px;
-    height: 28px;
-    position: absolute;
-    left: 0px;
-    top: 208px;
-}
-
-.contact-us {
-    color: #ffffff;
-    text-align: right;
-    font-family: 'Arimo-Regular', sans-serif;
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 400;
-    position: relative;
-    flex: 1;
-}
-
-.our-mission-is-to-democratize-computational-drug-d {
-    color: #ffffff;
-    text-align: left;
-    font-family: 'Arimo-Regular', sans-serif;
-    font-size: 18px;
-    line-height: 29.25px;
-    font-weight: 400;
-    position: absolute;
-    left: 0px;
-    top: 135px;
-    width: 487px;
-}
-
-.floating-action-button-atom {
-    background: #162b50;
-    border-radius: 360px;
-    border-style: solid;
-    border-color: #ffffff;
-    border-width: 1px;
-    padding: 16px;
-    width: 92px;
-    height: 89px;
-    position: absolute;
-    left: 1151px;
-    top: 328px;
-    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.08);
-}
-
-.send {
-    width: 57.14%;
-    height: 58.93%;
-    position: absolute;
-    right: 24.11%;
-    left: 18.75%;
-    bottom: 21.42%;
-    top: 19.65%;
-    overflow: visible;
-}
-
-.container10 {
-    border-style: solid;
-    border-color: rgba(255, 255, 255, 0.20);
-    border-width: 1px 0px 0px 0px;
-    width: 1242px;
-    height: 53px;
-    position: absolute;
-    left: 36px;
-    top: 441px;
-}
-
-.paragraph2 {
-    opacity: 0.8;
-    display: flex;
-    flex-direction: row;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 298.61px;
-    height: 20px;
-    position: absolute;
-    left: 0px;
-    top: 17px;
-}
-
-.copyright-2025-trusted-flooring-all-rights-reserved {
-    color: #ffffff;
-    text-align: left;
+  p {
+    color: $muted;
     font-family: 'Arimo-Regular', sans-serif;
     font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
+  }
+
+  .footer__legal {
+    display: flex;
+    gap: 24px;
+
+    a {
+      color: $muted;
+      font-size: 14px;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $text-light;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    text-align: center;
+    
+    .footer__legal {
+        justify-content: center;
+    }
+  }
+}
+
+
+
+// -------------------------------------------
+// MODAL DE WHATSAPP
+// -------------------------------------------
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; // Asegura que quede arriba de todo
+
+    border: none;
+    padding: 0;
+    border-radius: 12px;
+    background: #f7f7f7;
+    color: #1a1a1a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 450px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    
+    
+    // Backdrop/Overlay (Oscurecer el fondo)
+    &::backdrop {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+    }
+}
+
+.modal__content {
+    padding: 30px;
     position: relative;
 }
 
-.container11 {
-    display: flex;
-    flex-direction: row;
-    gap: 32px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 236.23px;
-    height: 20px;
+.modal__close {
     position: absolute;
-    left: 1005.77px;
-    top: 17px;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    color: #333;
+    transition: color 0.2s;
+    
+    &:hover {
+        color: #ff4d4d;
+    }
 }
 
-.link7 {
-    opacity: 0.8;
+.modal__title {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-family: 'Arimo-Bold', sans-serif;
+    color: $bg-footer; // Usar el color oscuro del footer
+}
+
+.modal__subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Formulario */
+.modal__form {
     display: flex;
-    flex-direction: row;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex: 1;
-    height: 20px;
-    position: relative;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.terms-conditions {
-    color: #ffffff;
-    text-align: left;
-    font-family: 'Arimo-Regular', sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
-    position: relative;
-}
-
-.link8 {
-    opacity: 0.8;
+.form__group {
     display: flex;
-    flex-direction: row;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    width: 82.56px;
-    height: 20px;
-    position: relative;
+    flex-direction: column;
+    gap: 5px;
+    
+    label {
+        font-size: 14px;
+        font-family: 'Arimo-Bold', sans-serif;
+        color: #333;
+    }
+    
+    input[type="text"],
+    textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: border-color 0.2s;
+        
+        &:focus {
+            border-color: $accent; // Color acento
+            outline: none;
+        }
+    }
 }
 
-.privacy-policy {
-    color: #ffffff;
-    text-align: left;
-    font-family: 'Arimo-Regular', sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
-    position: relative;
+.modal__submit-btn {
+    background: #25d366; /* Verde de WhatsApp */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    font-family: 'Arimo-Bold', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+    &:hover {
+        background: #1da851;
+    }
+    
+    svg {
+        fill: white;
+    }
 }
