@@ -1,10 +1,7 @@
-
-$color-primary: #c35c3b;
-$color-text-dark: #101828;
-$color-text-light: #4a5565;
+@use './tokens' as tokens;
 
 .banner {
-    background: #ffffff;
+    background: tokens.$color-white;
     min-height: 172px;
     width: 100%;
     padding: 20px 5%; 
@@ -43,11 +40,11 @@ $color-text-light: #4a5565;
     }
 
     &__title-inspire {
-        color: $color-text-dark; 
+        color: tokens.$color-text-dark; 
     }
 
     &__title-trust {
-        color: $color-primary;
+        color: tokens.$color-primary;
         margin-left: 14px; 
     }
 
@@ -57,6 +54,8 @@ $color-text-light: #4a5565;
         max-width: 420px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+    align-items: anchor-center;
         gap: 24px; 
         @media (max-width: 768px) {
             margin-left: 0;
@@ -64,7 +63,7 @@ $color-text-light: #4a5565;
     }
 
     &__paragraph {
-        color: $color-text-light; 
+        color: tokens.$color-text-light; 
         font-family: 'Arimo-Regular', sans-serif;
         font-size: 16px;
         line-height: 26px;
@@ -74,11 +73,12 @@ $color-text-light: #4a5565;
 
   
     &__button {
-        background: $color-primary; 
+        background: tokens.$color-primary; 
         color: #ffffff;
         width: 253px;
         height: 52px;
         border: none;
+        
         cursor: pointer;
         padding: 0;
         

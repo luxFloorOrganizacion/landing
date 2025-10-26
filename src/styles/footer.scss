@@ -1,0 +1,398 @@
+.footer,
+.footer * {
+    box-sizing: border-box;
+}
+
+.footer {
+    background: #142748;
+    height: 494px;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    background: #2d3ba8;
+    border-radius: 33554400px;
+    opacity: 0.5;
+    width: 384px;
+    height: 384px;
+    position: absolute;
+    left: 968px;
+    top: -181px;
+    filter: blur(64px);
+}
+
+.container2 {
+    background: #2d3ba8;
+    border-radius: 33554400px;
+    opacity: 0.5;
+    width: 384px;
+    height: 384px;
+    position: absolute;
+    left: -77px;
+    top: 215px;
+    filter: blur(64px);
+}
+
+
+
+.container4 {
+    width: 1212px;
+    height: 471px;
+    position: absolute;
+    left: 24px;
+    top: 64px;
+}
+
+.image-7 {
+    width: 153px;
+    height: 141px;
+    position: absolute;
+    left: 6px;
+    top: -49px;
+    object-fit: cover;
+    aspect-ratio: 153/141;
+}
+
+.container5 {
+    width: 512px;
+    height: 186.5px;
+    position: absolute;
+    left: 0px;
+    top: 141px;
+}
+
+.container6 {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 512px;
+    height: 40px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.container7 {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 165.03px;
+    height: 40px;
+    position: relative;
+}
+
+.container8 {
+    align-self: stretch;
+    flex-shrink: 0;
+    height: 24px;
+    position: relative;
+}
+
+.container9 {
+    opacity: 0.8;
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-self: stretch;
+    flex-shrink: 0;
+    height: 16px;
+    position: relative;
+}
+
+.paragraph {
+    width: 512px;
+    height: 58.5px;
+    position: absolute;
+    left: 0px;
+    top: 64px;
+}
+
+.link {
+    border-radius: 33554400px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 2px;
+    padding: 2px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 45px;
+    top: 145.5px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    overflow: visible;
+}
+
+.navigation {
+    width: 1212px;
+    height: 236px;
+    position: absolute;
+    left: 38px;
+    top: -12px;
+}
+
+.link2 {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 1212px;
+    height: 28px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.home {
+    color: #ffffff;
+    text-align: right;
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+    position: relative;
+    flex: 1;
+}
+
+.link3 {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 1212px;
+    height: 28px;
+    position: absolute;
+    left: 0px;
+    top: 52px;
+}
+
+.platform {
+    color: #ffffff;
+    text-align: right;
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+    position: relative;
+    flex: 1;
+}
+
+.link4 {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 848px;
+    height: 28px;
+    position: absolute;
+    left: 0px;
+    top: 104px;
+}
+
+.solutions {
+    color: #ffffff;
+    text-align: right;
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+    position: relative;
+    width: 1212px;
+}
+
+.link5 {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 1212px;
+    height: 28px;
+    position: absolute;
+    left: 0px;
+    top: 156px;
+}
+
+.company {
+    color: #ffffff;
+    text-align: right;
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+    position: relative;
+    flex: 1;
+}
+
+.link6 {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 1212px;
+    height: 28px;
+    position: absolute;
+    left: 0px;
+    top: 208px;
+}
+
+.contact-us {
+    color: #ffffff;
+    text-align: right;
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+    position: relative;
+    flex: 1;
+}
+
+.our-mission-is-to-democratize-computational-drug-d {
+    color: #ffffff;
+    text-align: left;
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 29.25px;
+    font-weight: 400;
+    position: absolute;
+    left: 0px;
+    top: 135px;
+    width: 487px;
+}
+
+.floating-action-button-atom {
+    background: #162b50;
+    border-radius: 360px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 1px;
+    padding: 16px;
+    width: 92px;
+    height: 89px;
+    position: absolute;
+    left: 1151px;
+    top: 328px;
+    box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.08);
+}
+
+.send {
+    width: 57.14%;
+    height: 58.93%;
+    position: absolute;
+    right: 24.11%;
+    left: 18.75%;
+    bottom: 21.42%;
+    top: 19.65%;
+    overflow: visible;
+}
+
+.container10 {
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.20);
+    border-width: 1px 0px 0px 0px;
+    width: 1242px;
+    height: 53px;
+    position: absolute;
+    left: 36px;
+    top: 441px;
+}
+
+.paragraph2 {
+    opacity: 0.8;
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 298.61px;
+    height: 20px;
+    position: absolute;
+    left: 0px;
+    top: 17px;
+}
+
+.copyright-2025-trusted-flooring-all-rights-reserved {
+    color: #ffffff;
+    text-align: left;
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    position: relative;
+}
+
+.container11 {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 236.23px;
+    height: 20px;
+    position: absolute;
+    left: 1005.77px;
+    top: 17px;
+}
+
+.link7 {
+    opacity: 0.8;
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+    height: 20px;
+    position: relative;
+}
+
+.terms-conditions {
+    color: #ffffff;
+    text-align: left;
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    position: relative;
+}
+
+.link8 {
+    opacity: 0.8;
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    width: 82.56px;
+    height: 20px;
+    position: relative;
+}
+
+.privacy-policy {
+    color: #ffffff;
+    text-align: left;
+    font-family: 'Arimo-Regular', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    position: relative;
+}

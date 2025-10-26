@@ -1,19 +1,16 @@
 ---
 import '../styles/gallery.scss';
-
-
 ---
 <section class="gallery-section">
-    <!-- Encabezado de la Galería y Navegación -->
     <header class="gallery-header">
         <h2 class="gallery-header__title">Gallery</h2>
         <div class="gallery-header__navigation">
-            <button class="gallery-header__nav-button" aria-label="Anterior">
+            <button class="gallery-header__nav-button js-prev" aria-label="Anterior">
                 <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.5 15L7.5 10L12.5 5" stroke="#4A5565" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </button>
-            <button class="gallery-header__nav-button" aria-label="Siguiente">
+            <button class="gallery-header__nav-button js-next" aria-label="Siguiente">
                 <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.5 15L12.5 10L7.5 5" stroke="#4A5565" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -21,68 +18,93 @@ import '../styles/gallery.scss';
         </div>
     </header>
 
-    <!-- Contenedor de las Tarjetas de Producto (usará Grid) -->
-    <div class="product-grid">
-        <!-- Tarjeta 1: Cloudstone Beige -->
-        <div class="product-card">
-            <div class="product-card__image-wrapper">
-                <img class="product-card__image" src="material.png" alt="Cloudstone Beige Flooring" />
-            </div>
-            <div class="product-card__details">
-                <h3 class="product-card__name">Cloudstone Beige</h3>
-                <p class="product-card__price">
-                    <span class="product-card__price-value">29.99</span>
-                    <span class="product-card__price-unit">/m²</span>
-                </p>
-                <p class="product-card__dimensions">600mm | 600mm | 5mm</p>
-            </div>
-        </div>
-        
-        <!-- Tarjeta 2: Noir Aurum -->
-        <div class="product-card">
-            <div class="product-card__image-wrapper">
-                <img class="product-card__image" src="material.png" alt="Noir Aurum Flooring" />
-            </div>
-            <div class="product-card__details">
-                <h3 class="product-card__name">Noir Aurum</h3>
-                <p class="product-card__price">
-                    <span class="product-card__price-value">62.50</span>
-                    <span class="product-card__price-unit">/m²</span>
-                </p>
-                <p class="product-card__dimensions">800mm | 800mm | 6mm</p>
-            </div>
-        </div>
-        
-        <!-- Tarjeta 3: Ash Drift -->
-        <div class="product-card">
-            <div class="product-card__image-wrapper">
-                <img class="product-card__image" src="material.png" alt="Ash Drift Flooring" />
-            </div>
-            <div class="product-card__details">
-                <h3 class="product-card__name">Ash Drift</h3>
-                <p class="product-card__price">
-                    <span class="product-card__price-value">37.00</span>
-                    <span class="product-card__price-unit">/m²</span>
-                </p>
-                <p class="product-card__dimensions">600mm | 600mm | 5mm</p>
-            </div>
-        </div>
-        
-        <!-- Tarjeta 4: Storm Ember -->
-        <div class="product-card">
-            <div class="product-card__image-wrapper">
-                <img class="product-card__image" src="material.png" alt="Storm Ember Flooring" />
-            </div>
-            <div class="product-card__details">
-                <h3 class="product-card__name">Storm Ember</h3>
-                <p class="product-card__price">
-                    <span class="product-card__price-value">49.99</span>
-                    <span class="product-card__price-unit">/m²</span>
-                </p>
-                <p class="product-card__dimensions">600mm | 1200mm | 8mm</p>
-            </div>
-        </div>
-        
-       
-    </div>
+    <div class="product-grid js-grid"></div>
 </section>
+
+<script>
+(function(){
+  /**
+   * @typedef {{image:string,name:string,price:string,unit:string,dimensions:string}} Product
+   */
+  /** @type {Product[]} */
+  const products = [
+    { image: 'material.png', name: 'Cloudstone Beige', price: '29.99', unit: '/m²', dimensions: '600mm | 600mm | 5mm' },
+    { image: 'material.png', name: 'Noir Aurum', price: '62.50', unit: '/m²', dimensions: '800mm | 800mm | 6mm' },
+    { image: 'material.png', name: 'Ash Drift', price: '37.00', unit: '/m²', dimensions: '600mm | 600mm | 5mm' },
+    { image: 'material.png', name: 'Storm Ember', price: '49.99', unit: '/m²', dimensions: '600mm | 1200mm | 8mm' }
+  ];
+
+  /** @type {HTMLElement|null} */
+  const grid = document.querySelector('.js-grid');
+  /** @type {HTMLButtonElement|null} */
+  const prevBtn = document.querySelector('.js-prev');
+  /** @type {HTMLButtonElement|null} */
+  const nextBtn = document.querySelector('.js-next');
+
+  if (!grid || !prevBtn || !nextBtn) {
+    return;
+  }
+  /** @type {HTMLElement} */ const gridEl = grid;
+  /** @type {HTMLButtonElement} */ const prevEl = prevBtn;
+  /** @type {HTMLButtonElement} */ const nextEl = nextBtn;
+
+  const state = { index: 0 };
+
+  function perView(){
+    return window.matchMedia('(max-width: 640px)').matches ? 2 : products.length;
+  }
+
+  /** @param {number} idx */
+  function clampIndex(idx:number){
+    const pv = perView();
+    const maxIndex = Math.max(0, products.length - pv);
+    return Math.min(Math.max(0, idx), maxIndex);
+  }
+
+  /** @param {Product} p */
+  function cardHTML(p:any){
+    return `
+    <div class="product-card">
+      <div class="product-card__image-wrapper">
+        <img class="product-card__image" src="${p.image}" alt="${p.name}" />
+      </div>
+      <div class="product-card__details">
+        <h3 class="product-card__name">${p.name}</h3>
+        <p class="product-card__price">
+          <span class="product-card__price-value">${p.price}</span>
+          <span class="product-card__price-unit">${p.unit}</span>
+        </p>
+        <p class="product-card__dimensions">${p.dimensions}</p>
+      </div>
+    </div>`;
+  }
+
+  function render(){
+    const pv = perView();
+    const slice = products.slice(state.index, state.index + pv);
+    gridEl.innerHTML = slice.map(cardHTML).join('');
+    const atStart = state.index <= 0;
+    const atEnd = state.index + pv >= products.length;
+    prevEl.toggleAttribute('disabled', atStart);
+    nextEl.toggleAttribute('disabled', atEnd);
+  }
+
+  function next(){
+    state.index = clampIndex(state.index + perView());
+    render();
+  }
+  function prev(){
+    state.index = clampIndex(state.index - perView());
+    render();
+  }
+
+  prevEl.addEventListener('click', prev);
+  nextEl.addEventListener('click', next);
+  window.addEventListener('resize', function(){
+    state.index = clampIndex(state.index);
+    render();
+  });
+
+  render();
+})();
+</script>

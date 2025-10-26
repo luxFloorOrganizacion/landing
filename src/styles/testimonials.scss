@@ -1,0 +1,224 @@
+// Variables base
+$primary: #C35C3B;
+$ink: #2d2d2d;
+$muted: #6B6B6B;
+$muted-2: #6a7282;
+$bg: #ffffff;
+$panel: rgba(255, 255, 255, 0.6);
+$radius: 24px;
+$round: 9999px;
+
+// -------------------------------------------
+// TESTIMONIALS SECTION
+// -------------------------------------------
+
+.testimonials-section {
+  text-align: center;
+  padding: 80px 16px;
+  background: $bg;
+}
+
+.testimonials-title {
+  font-family: 'Tinos-Italic', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  color: #000;
+}
+
+.testimonials-subtitle {
+  margin: 8px auto 32px;
+  max-width: 720px;
+  font-family: 'Arimo-Regular', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #000;
+}
+
+// -------------------------------------------
+// PANEL & TABS
+// -------------------------------------------
+
+.testimonials-panel {
+  max-width: 1117px;
+  margin: 0 auto;
+  background: $panel;
+  border-radius: $radius;
+  padding: 24px 24px 32px;
+}
+
+.testimonials-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+
+  .tab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px;
+    height: 44px;
+    border: 0;
+    border-radius: $round;
+    background: #d9d9d9;
+    color: #4a4a4a;
+    font: 16px/24px 'Arimo-Regular', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: lighten($primary, 25%);
+      color: #fff;
+    }
+
+    &.tab--active {
+      background: $primary;
+      color: #fff;
+    }
+  }
+}
+
+// -------------------------------------------
+// GRID
+// -------------------------------------------
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 256px;
+  gap: 24px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// -------------------------------------------
+// CARD
+// -------------------------------------------
+
+.card {
+  background: $bg;
+  border-radius: $radius;
+  padding: 40px;
+
+  .card-stars {
+    display: flex;
+    gap: 4px;
+
+    .star {
+      flex: 0 0 auto;
+    }
+  }
+
+  .card-quote {
+    margin: 16px 0 24px;
+    color: $ink;
+    font: 16px/26px 'Arimo-Regular', sans-serif;
+  }
+
+  .card-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: $round;
+      object-fit: cover;
+    }
+
+    .author-name {
+      margin: 0;
+      color: $ink;
+      font: 400 16px/24px 'Arimo-Regular', sans-serif;
+    }
+
+    .author-role {
+      margin: 0;
+      color: $muted-2;
+      font: 400 14px/20px 'Arimo-Regular', sans-serif;
+    }
+  }
+}
+
+// -------------------------------------------
+// STATS
+// -------------------------------------------
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .stat {
+    background: $bg;
+    border-radius: $radius;
+    padding: 32px;
+
+    .stat-value {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      span {
+        color: $ink;
+        font: 400 48px/48px 'Arimo-Regular', sans-serif;
+      }
+
+      svg {
+        flex-shrink: 0;
+      }
+    }
+
+    .stat-label {
+      margin-top: 8px;
+      color: #4a5565;
+      font: 400 14px/19px 'Arimo-Regular', sans-serif;
+    }
+  }
+
+  @media (max-width: 900px) {
+    flex-direction: row;
+  }
+}
+
+// -------------------------------------------
+// NAV BUTTONS
+// -------------------------------------------
+
+.testimonials-nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32px;
+
+  &__btn {
+    width: 56px;
+    height: 56px;
+    border: 0;
+    border-radius: $round;
+    background: #e5e5e5;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: darken(#e5e5e5, 10%);
+    }
+  }
+}
+
+// -------------------------------------------
+// RESPONSIVE OPTIMIZATION
+// -------------------------------------------
+
+@media (max-width: 640px) {
+  .testimonials-panel { padding: 16px; }
+  .card,
+  .stat { padding: 24px; }
+}

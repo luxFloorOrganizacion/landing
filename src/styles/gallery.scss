@@ -59,7 +59,7 @@ $color-button-border: rgba(209, 213, 220, 0.50);
         justify-content: center;
         cursor: pointer;
         flex-shrink: 0;
-        transition: background-color 0.2s;
+        transition: background-color 0.2s, opacity 0.2s;
 
         &:hover {
             background-color: darken($color-button-bg, 3%);
@@ -68,6 +68,12 @@ $color-button-border: rgba(209, 213, 220, 0.50);
         .icon {
             width: 20px;
             height: 20px;
+        }
+
+        &[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
         }
     }
 }
@@ -82,6 +88,10 @@ $color-button-border: rgba(209, 213, 220, 0.50);
     // minmax(200px, 1fr) asegura que la columna no sea menor de 200px y crezca equitativamente
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 24px; // Espacio uniforme entre las tarjetas
+
+    @media (max-width: 640px) {
+        gap: 16px;
+    }
 
     .is-hidden-mobile {
         @media (max-width: 1024px) {

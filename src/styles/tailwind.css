@@ -38,13 +38,29 @@
 .slideImage {
     border-radius: 120px 120px 0px 0px;
     width: 369px;
-    height: 491px;
+    height: 90%;
     position: absolute;
     z-index: 2;
     right: 32px;
-    top: 32px;
+    /* top: 32px; */
+    bottom: 0;
     overflow: hidden;
     background: url(Frame2.png) center; background-size: cover; background-repeat: no-repeat;
+
+    @media (max-width: 576px) {
+        right: auto;
+        
+        left: 50%;
+        height: 70%;
+        transform: translateX(-50%);
+
+        width: 100%;
+        max-width: 369px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
 }
 
 
@@ -64,8 +80,12 @@
     height: 3px;
     background: var(--color-gris-suave);
     width: 50px;
-    top: 141px; 
+    top: 120px; 
      left: 43%;
+
+     @media (max-width: 576px) {
+       /* top: 0;  */
+    }
 }
 
 .leyenda{
@@ -80,7 +100,7 @@
     line-height: 13px;
     bottom: 20px;
     left: 20px;
-    width: 356px;
+    /* width: 356px; */
     text-align: left;
 }
 
@@ -97,6 +117,8 @@
     font-weight: 400;
     text-transform: uppercase;
 }
+
+
 .degradado{
     position: absolute;
     bottom: 0;
