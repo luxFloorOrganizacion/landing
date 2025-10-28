@@ -58,7 +58,7 @@
     max-width: 100%;
     min-height: 650px;
     border-radius: 120px;
-    background: url(background.png) center;
+  background: url('../assets/background.png') center/cover no-repeat;
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: var(--radius-card);
