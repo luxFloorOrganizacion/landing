@@ -28,9 +28,9 @@ import '../styles/gallery.scss';
    */
   /** @type {Product[]} */
   const products = [
-    { image: 'material.png', name: 'Cloudstone Beige', price: '29.99', unit: '/m²', dimensions: '600mm | 600mm | 5mm' },
-    { image: 'material.png', name: 'Noir Aurum', price: '62.50', unit: '/m²', dimensions: '800mm | 800mm | 6mm' },
-    { image: 'material.png', name: 'Ash Drift', price: '37.00', unit: '/m²', dimensions: '600mm | 600mm | 5mm' },
+    { image: 'https://imgs.search.brave.com/zQUGL4zSWbD2ISBxN32psiCHqA8zxLbu-W1Y3GU49U8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9wYXJlZGVzLW1h/ZGVyYS1waXNvLWZv/bmRvXzEyNDktMTAw/OS5qcGc_c2VtdD1h/aXNfaHlicmlkJnc9/NzQwJnE9ODA', name: 'Cloudstone Beige', price: '29.99', unit: '/m²', dimensions: '600mm | 600mm | 5mm' },
+    { image: 'https://imgs.search.brave.com/vPpeDvuxp1PsHuRsPh5KWRSeCsWRkiHowTHoqHPnIhI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/aG9tZWRyZXNzaW5n/Lm14L2ltYWdlcy9w/aXNvcy1kZS1tYWRl/cmEvbGFtaW5hZG9z/L3VyYmFuODMyLzgu/UGlzby1sYW1pbmFk/by1Db2xlY2Npb24t/VXJiYW4tODMyLU9h/ay1UcmFkaXRpb24t/R3JleS1CZWlnZS1X/aWRlLVBsYW5rLmpw/Zw', name: 'Noir Aurum', price: '62.50', unit: '/m²', dimensions: '800mm | 800mm | 6mm' },
+    { image: 'https://imgs.search.brave.com/AahFIN05TLFAk4xOPOfmKzN50uZoQXLUHx5PdIO4X0g/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9RX05QXzJY/XzYyOTgzNS1NTEE4/OTgyODkxNzAxN18w/ODIwMjUtRS53ZWJw', name: 'Ash Drift', price: '37.00', unit: '/m²', dimensions: '600mm | 600mm | 5mm' },
     { image: 'material.png', name: 'Storm Ember', price: '49.99', unit: '/m²', dimensions: '600mm | 1200mm | 8mm' }
   ];
 
@@ -71,13 +71,15 @@ import '../styles/gallery.scss';
       <div class="product-card__details">
         <h3 class="product-card__name">${p.name}</h3>
         <p class="product-card__price">
-          <span class="product-card__price-value">${p.price}</span>
-          <span class="product-card__price-unit">${p.unit}</span>
+         
         </p>
-        <p class="product-card__dimensions">${p.dimensions}</p>
+
       </div>
     </div>`;
   }
+  // <span class="product-card__price-unit">${p.unit}</span>
+        //<p class="product-card__dimensions">${p.dimensions}</p>
+        //          <span class="product-card__price-value">${p.price}</span>
 
   function render(){
      const pv = perView();

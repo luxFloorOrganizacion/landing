@@ -114,6 +114,20 @@ $radius: 9999px;
   }
 }
 
+// Contenedor de grilla para iconos sociales (2x2)
+.footer__socials {
+  display: grid;
+  grid-template-columns: repeat(2, 48px);
+  grid-auto-rows: 48px;
+  gap: 12px 16px;
+  justify-items: center;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    justify-content: center;
+  }
+}
+
 // Estilos para el ícono de LinkedIn (Círculo)
 .footer__social-link {
     width: 40px;

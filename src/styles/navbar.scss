@@ -1,0 +1,99 @@
+.separador{
+    height: 80px;
+    display: none;
+    @media (max-width: 768px) {
+        height: 40px;
+        display: block;
+    }
+}
+
+.header-nav {
+display: flex; /* Habilitamos Flexbox para alinear elementos */
+    align-items: center; /* Centramos verticalmente todos los elementos hijos */
+    justify-content: space-between; /* Distribuye espacio entre logo, enlaces y botón */
+    max-width: 80%;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 10px 32px; /* Relleno superior/inferior más pequeño para hacerlo más compacto */
+    height: 66px; /* Altura fija para la barra */
+    box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur(48px); /* Efecto de cristal esmerilado */
+    overflow: hidden;
+    margin: 0 auto;
+    position: fixed;
+    top: 10px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 10px;
+      @media (max-width: 768px) {
+        height: 40px;
+        display: block;
+    }
+
+}
+
+/* Estilos de la Imagen (Logotipo) */
+.header-nav__logo {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    /* Ajustado para el flujo de Flexbox, eliminando posición absoluta */
+}
+
+/* Estilos Comunes de Texto (Enlaces y Botones) */
+.nav-link__text,
+.cta-button__text {
+    font-family: 'Outfit-Medium', sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+/* Contenedor de Enlaces de Navegación */
+.nav-links {
+    display: flex;
+    gap: 24px; /* Espacio entre los enlaces */
+    margin: 0 auto; /* Centra el grupo de enlaces en el espacio restante */
+}
+
+/* Estilos Individuales de Enlace */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Espacio entre el texto del enlace y el icono */
+    text-decoration: none; /* Elimina el subrayado por defecto de los 'a' */
+    color: #212121; /* Color de texto más estándar */
+    transition: color 0.3s ease; /* Transición suave para el hover */
+}
+
+/* Efecto Hover para Enlaces */
+.nav-link:hover {
+    color: #c35c3b; /* Color llamativo al pasar el ratón */
+}
+
+/* Icono (Representación del 'chevron-down') */
+.nav-link__icon {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    /* Aquí debes añadir los estilos para tu icono, por ejemplo, un SVG o un font-icon */
+    /* background-color: lightgray; /* Placeholder visual */
+}
+
+/* Botón de Llamada a la Acción (CTA) */
+.cta-button {
+    background: #c35c3b; /* El color llamativo que ya tenías */
+    border: none; /* Quitamos el borde por defecto de los botones */
+    border-radius: 16px;
+    padding: 8px 16px;
+    cursor: pointer; /* Indicador de click */
+    transition: background-color 0.3s ease;
+    min-width: 157px; /* Mantenemos el ancho original, pero es mejor que crezca automáticamente */
+}
+
+/* Texto del Botón */
+.cta-button__text {
+    color: #ffffff;
+    text-align: center;
+}

@@ -32,6 +32,11 @@ $color-text-medium: tokens.$color-text-medium; // Similar al gris del texto de d
             background-color: tokens.$color-primary-orange;
             color: tokens.$color-text-white;
             justify-content: flex-start; // Alinea el contenido al inicio
+
+            h1,h2,p{
+
+              padding: 20px;
+            }
             
             // Ajuste específico para la imagen inferior en la columna izquierda
             .benefits-section__image-bottom {
@@ -59,7 +64,7 @@ $color-text-medium: tokens.$color-text-medium; // Similar al gris del texto de d
 
         // Columna central (sin fondo directo aquí, la tarjeta tiene su propio fondo)
         &--center {
-            background-color: transparent; // El fondo lo dará la tarjeta interna
+            background-color: #f0ead6; // El fondo lo dará la tarjeta interna
             align-items: center; // Centra la tarjeta
          
             @media (max-width: 1024px) {
@@ -108,7 +113,7 @@ $color-text-medium: tokens.$color-text-medium; // Similar al gris del texto de d
 .benefit-card {
     display: flex;
     flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); // Sombra suave
+   
   //  border-radius: 10px; // Bordes ligeramente redondeados
     overflow: hidden; // Para que las imágenes y el contenido no se salgan
 
