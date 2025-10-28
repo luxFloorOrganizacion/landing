@@ -45,7 +45,7 @@
     /* top: 32px; */
     bottom: 0;
     overflow: hidden;
-    background: url(Frame2.png) center; background-size: cover; background-repeat: no-repeat;
+    background: url(/Frame2.png) center; background-size: cover; background-repeat: no-repeat;
 
     @media (max-width: 576px) {
         right: auto;
