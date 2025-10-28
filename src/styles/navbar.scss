@@ -26,11 +26,7 @@ display: flex; /* Habilitamos Flexbox para alinear elementos */
     right: 0;
     z-index: 1000;
     padding: 10px;
-      @media (max-width: 768px) {
-        height: 40px;
-        display: block;
-    }
-
+     
 }
 
 /* Estilos de la Imagen (Logotipo) */

@@ -80,7 +80,7 @@
     height: 3px;
     background: var(--color-gris-suave);
     width: 50px;
-    top: 120px; 
+    bottom: 120px; 
      left: 43%;
 
      @media (max-width: 576px) {
